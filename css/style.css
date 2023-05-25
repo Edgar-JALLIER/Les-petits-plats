@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap");
+header {
+  text-align: center;
+  margin: 30px 0;
+}
+header img {
+  width: 270px;
+}
+
+main {
+  font-family: "Lato", "Roboto", sans-serif;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.search-bar {
+  display: flex;
+  position: relative;
+  margin: 0 10px;
+}
+
+.input-recherche {
+  color: black;
+  font-size: 18px;
+  background-color: #E7E7E7;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  padding: 20px;
+}
+.input-recherche::placeholder {
+  font-family: "Lato", sans-serif;
+}
+
+.icon-search {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.all-recette-container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 50px;
+  column-gap: 50px;
+}
+
+.recette-card {
+  width: 380px;
+  height: 364px;
+  background: #E7E7E7;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.recette-card__image {
+  height: 170px;
+  background: #C7BEBE;
+  border-radius: 10px 10px 0 0;
+}
+.recette-card__photo {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.recette-card__title-time {
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+}
+.recette-card__title-time h2 {
+  font-size: 18px;
+  margin: 0px;
+  font-weight: 400;
+}
+.recette-card__div-time {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 27%;
+  font-weight: bold;
+  font-size: 20px;
+}
+.recette-card__p-time {
+  margin: 0px 0 2px 0;
+  padding-left: 6px;
+  font-size: 18px;
+}
+.recette-card__ingredients-instruction {
+  display: flex;
+}
+.recette-card__ingredient-list {
+  width: 50%;
+  list-style-type: none;
+  padding: 0 0 0 20px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recette-card__ingredient-item {
+  font-size: 12px;
+}
+.recette-card__ingredient-item-bold {
+  font-weight: 700;
+}
+.recette-card__description {
+  width: 60%;
+  margin: 0;
+  padding: 0 15px 0 15px;
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=style.css.map */
