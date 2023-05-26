@@ -1,5 +1,8 @@
 const template = document.querySelector("#mon-template");
-const sectionRecette = document.querySelector(".all-recette-container");
+const sectionRecette = document.querySelector(".ma-section-recette");
+const searchBar = document.getElementById("search");
+
+let tableauDesRecettes = [];
 
 // Fonction de récupération de la data des recettes
 async function getRecettes() {
@@ -7,6 +10,12 @@ async function getRecettes() {
     const response = await fetch("../../data/data-recettes.json");
     if (response.ok) {
       const responseJson = await response.json();
+
+      //création du tableau de toutes les recettes
+      for (const element of responseJson.recipes) {
+        tableauDesRecettes.push(element);
+      }
+
       return responseJson.recipes;
     }
   } catch (err) {
@@ -17,6 +26,15 @@ async function getRecettes() {
 
 // Fonction d'appel de la fonction de création du DOM des recettes
 async function createRecetteDom(recettes) {
+const monContainer = document.querySelector(".all-recette-container");  
+
+  if (monContainer) {
+    monContainer.remove();
+  }
+
+  const createContainer = document.createElement("section");
+  createContainer.setAttribute("class", "all-recette-container");
+
   recettes.forEach((recette) => {
     const maRecette = document.createElement("div");
     maRecette.setAttribute("class", "recette-card");
@@ -38,8 +56,9 @@ async function createRecetteDom(recettes) {
           </div>
         </div>
       </div>`;
-    
-    sectionRecette.appendChild(maRecette);
+
+    createContainer.appendChild(maRecette);
+    sectionRecette.appendChild(createContainer);
     affichageIngredient(recette);
   });
 }
@@ -47,30 +66,30 @@ async function createRecetteDom(recettes) {
 //Fonction pour afficher une liste de tous les ingrédients d'une recette (l'ingrédient, la quantité, l'unité de mesure)
 function affichageIngredient(uneRecette) {
   uneRecette.ingredients.forEach((e) => {
-      const maListe = document.getElementById(`${uneRecette.id}`)
-      const mesIngredients = document.createElement("li");
-      const monIngredient = document.createElement("span");
-      const spanQuantity = document.createElement("span");
-      const spanUnit = document.createElement("span");
-      const maQuantity = e.quantity ? e.quantity : undefined;
-      const monUnit = e.unit ? e.unit : undefined;
+    const maListe = document.getElementById(`${uneRecette.id}`);
+    const mesIngredients = document.createElement("li");
+    const monIngredient = document.createElement("span");
+    const spanQuantity = document.createElement("span");
+    const spanUnit = document.createElement("span");
+    const maQuantity = e.quantity ? e.quantity : undefined;
+    const monUnit = e.unit ? e.unit : undefined;
 
-      mesIngredients.setAttribute("class", "recette-card__ingredient-item");
-      monIngredient.setAttribute("class", "recette-card__ingredient-item-bold")
-      monIngredient.innerHTML = `${e.ingredient}`
-      
-      if (maQuantity != undefined){
-        spanQuantity.innerHTML = `: ${maQuantity}`
-      }
-      if (monUnit != undefined){
-        spanUnit.innerHTML = ` ${monUnit}`
-      }
-      
-      mesIngredients.appendChild(monIngredient);
-      mesIngredients.appendChild(spanQuantity);
-      mesIngredients.appendChild(spanUnit);
-      maListe.appendChild(mesIngredients);
-    })
+    mesIngredients.setAttribute("class", "recette-card__ingredient-item");
+    monIngredient.setAttribute("class", "recette-card__ingredient-item-bold");
+    monIngredient.innerHTML = `${e.ingredient}`;
+
+    if (maQuantity != undefined) {
+      spanQuantity.innerHTML = `: ${maQuantity}`;
+    }
+    if (monUnit != undefined) {
+      spanUnit.innerHTML = ` ${monUnit}`;
+    }
+
+    mesIngredients.appendChild(monIngredient);
+    mesIngredients.appendChild(spanQuantity);
+    mesIngredients.appendChild(spanUnit);
+    maListe.appendChild(mesIngredients);
+  });
 }
 
 // Fonction qui permet d'initialiser les fonctions
@@ -80,3 +99,30 @@ async function init() {
 }
 
 init();
+
+searchBar.addEventListener("keyup", (e) => {
+  if (searchBar.value.length >= 3) {
+    rechercheDeRecette(tableauDesRecettes);
+  } else {
+    createRecetteDom(tableauDesRecettes);
+  }
+});
+
+function rechercheDeRecette(tableau) {
+  let newTableau = [];
+  tableau.filter((e) => {
+    const elementTrouve = JSON.stringify(e).indexOf(searchBar.value) >= 0;
+    if (elementTrouve === true) {
+      newTableau.push(e);
+    }
+  });
+  if (newTableau.length <= 0) {
+    const monContainer = document.querySelector(".all-recette-container");
+    if (monContainer) {
+      monContainer.remove();
+    }
+    //alert(`Pas de recette disponible avec le mot clé "${searchBar.value}"`);
+  } else {
+    return createRecetteDom(newTableau);
+  }
+}
