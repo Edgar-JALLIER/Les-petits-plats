@@ -29,21 +29,16 @@ const mySetOfIngredients = new Set();
 const mySetOfAppareils = new Set();
 const mySetOfUstensiles = new Set();
 
-// Mes filtres sélectionnées
-// const tableauFiltreIngredients = [];
-// const tableauFiltreAppareils = [];
-// const tableauFiltreUstensiles = [];
-
 // Objet pour répertorier les filtre sélectionnées
 const allFilterSelected= {
   ingredients: [],
   appareils: [],
   ustensiles: []
 };
-// tableau pour les recettes filtré
 
-
+// Tbaleau avec toutes les recettes créé après la récupération des données
 let tableauDesRecettes = [];
+
 // Fonction de récupération de la data des recettes
 async function getRecettes() {
   try {
@@ -174,7 +169,6 @@ function ajoutFiltre(monItem, filterCategorie) {
     mesTagsAppareils.appendChild(newDivTag)
     filterTagAppareils.nextElementSibling.classList.add("hide");
     filterTagAppareils.style.setProperty('--deg', '0deg');
-    // tableauFiltreAppareils.push(nomDuTag);
     allFilterSelected[filterCategorie].push(nomDuTag);
     rechercheDeRecetteParTagAppareil()
   }
@@ -184,16 +178,12 @@ function ajoutFiltre(monItem, filterCategorie) {
     mesTagsUstensiles.appendChild(newDivTag)
     filterTagUstensiles.nextElementSibling.classList.add("hide");
     filterTagUstensiles.style.setProperty('--deg', '0deg');
-    // tableauFiltreUstensiles.push(nomDuTag);
     allFilterSelected[filterCategorie].push(nomDuTag);
     rechercheDeRecetteParTagUstensile();
   }
 
   const croix = document.querySelector(`.${tagPourIdUnique}`);
   croix.addEventListener("click", removeFilterTag);
-
-  // let filtreElement = document.querySelectorAll(".my-tag");
-  // const tableauDeFiltre = Array.from(filtreElement).map((f) => f.innerText);
 }
 
 
@@ -222,14 +212,6 @@ function removeFilterTag(maCroix) {
     
   }
   rechercheDeRecetteAfterDelete();
-//   rechercheDeRecetteParTagUstensile(tableauDesRecettes);
-// rechercheDeRecetteParTagIngredient(tableauDesRecettes);
-// rechercheDeRecetteParTagAppareil(tableauDesRecettes);
   //Suppression sur le DOM
   monTag.remove();
-
-
-  // let filtreElement = document.querySelectorAll(".my-tag");
-  // const tableauDeFiltre = Array.from(filtreElement).map((f) => f.innerText);
-  // rechercheDeRecetteParTag(tableauDesRecettes, tableauDeFiltre);
 }
