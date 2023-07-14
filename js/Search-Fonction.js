@@ -1,3 +1,5 @@
+let bonjour = 'test';
+
 let arrayRecetteAfterFilter = new Object(tableauDesRecettes);
 
 let arrayRecetteAfterSearch =
