@@ -13,29 +13,116 @@
   </head>
   <body>
     <header>
-      <img src="./assets/logo.png" alt="" />
+      <img
+        src="./assets/Logo-new.png"
+        alt="Logo les petits plats"
+        class="logo-de-base"
+      />
+      <div>
+        <h2>
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET
+          DÉLICIEUSES
+        </h2>
+        <section class="search-bar">
+          <input
+            type="text"
+            class="input-recherche"
+            id="search"
+            placeholder="Rechercher une recette, un ingrédient, ..."
+            autocomplete="off"
+          />
+          <label for="search">
+            <img class="icon-search" src="./assets/Loop CTA.png" alt="" />
+          </label>
+        </section>
+      </div>
     </header>
+
     <main>
-      <section class="search-bar">
-        <input
-          type="text"
-          class="input-recherche"
-          id="search"
-          placeholder="Rechercher une recette"
-          autocomplete="off"
-        />
-        <label for="search">
-          <img class="icon-search" src="./assets/icon-search.png" alt="" />
-        </label>
+      <section class="tags-container">
+        <div class="tags-div">
+          <div class="tag-for-ingredients">
+          <div class="tag-for-ingredients-titre" id="filter-ingredients">
+            Ingrédients
+          </div>
+          <div class="container-all-ingredients hide" id="filter-ingredients-container">
+            <div class="div-search-bar-mini" id="search-bar-ingredients">
+              <input type="text" id="search-mini-ingredients" class="search-bar-mini" />
+              <label for="search-mini">
+                <img
+                  class="icon-search-mini"
+                  src="./assets/mini-loupe.png"
+                  alt=""
+                />
+              </label>
+            </div>
+        
+          </div>
+        </div>
+        <div class="tag-for-ingredients">
+          <div class="tag-for-ingredients-titre" id="filter-appareils">
+            Appareils
+          </div>
+          <div class="container-all-ingredients hide" id="filter-appareils-container">
+            <div class="div-search-bar-mini" id="search-bar-appareils">
+              <input type="text" id="search-mini-appareils" class="search-bar-mini" />
+              <label for="search-mini">
+                <img
+                  class="icon-search-mini"
+                  src="./assets/mini-loupe.png"
+                  alt=""
+                />
+              </label>
+            </div>
+        
+          </div>
+        </div>
+        <div class="tag-for-ingredients">
+          <div class="tag-for-ingredients-titre" id="filter-ustensiles">
+            Ustensiles
+          </div>
+          <div class="container-all-ingredients hide" id="filter-ustensiles-container">
+            <div class="div-search-bar-mini" id="search-bar-ustensiles">
+              <input type="text" id="search-mini-ustensiles" class="search-bar-mini" />
+              <label for="search-mini">
+                <img
+                  class="icon-search-mini"
+                  src="./assets/mini-loupe.png"
+                  alt=""
+                />
+              </label>
+            </div>
+        
+          </div>
+        </div>
+        <!-- <div class="tag-for-appareils"></div>
+        <div class="tag-for-ustensiles"></div> -->
+        </div>
+        <div class="tag-for-recette-number"></div>
       </section>
 
-      <section class="tags-container">
-        <div class="tag-for-ingredients"></div>
-        <div class="tag-for-appareils"></div>
-        <div class="tag-for-ustensiles"></div>
+      <section class="selected-tags-container">
+        <div class="selected-tags-for" id="tag-ingredient">
+    
+        </div>
+        <div class="selected-tags-for" id="tag-appareils">
+          <!-- <div class="my-tag">
+            Blender 
+            <i class="fa-solid fa-xmark"></i>
+          </div> -->
+        </div>
+        <div class="selected-tags-for" id="tag-ustensiles">
+          <!-- <div class="my-tag">
+            Louche 
+            <i class="fa-solid fa-xmark"></i>
+          </div> -->
+        </div>
       </section>
+
+
 
       <section class="ma-section-recette">
+        <span class="errorMessage"></span>
         <!--<section class="all-recette-container">
           <div class="recette-card">
           <div class="recette-card__image"></div>
@@ -61,6 +148,8 @@
       </section>
     </main>
     <script src="/js/index.js"></script>
+    <script src="/js/AffichageFiltre.js"></script>
     <script src="/js/Search-Fonction.js"></script>
+    <script src="/js/Input-animation.js"></script>
   </body>
 </html>

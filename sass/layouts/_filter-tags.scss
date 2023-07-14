@@ -1,0 +1,138 @@
+.tags-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  margin: 20px;
+}
+.tags-div {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 66px;
+  font-family: $fontSecondaire;
+  font-weight: 500;
+  font-size: 16px;
+}
+.tag-for {
+  &-recette-number {
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+    font-weight: 400;
+  }
+  &-ingredients {
+    position: relative;
+    flex-wrap: wrap;
+    border-radius: 11px;
+    background-color: white;
+    transition: transform 0.5s ease;
+    &-titre {
+      cursor: pointer;
+      width: 162px;
+      padding: 17px;
+
+      &::after {
+        font-family: "Font Awesome 6 Free", serif;
+        font-weight: 900;
+        content: "\f078";
+        font-size: 16px;
+        position: absolute;
+        top: 19px;
+        right: 15px;
+        transition: 350ms ease-out;
+        rotate: var(--deg, 0deg);
+      }
+    }
+  }
+}
+
+.container-all-ingredients {
+  width: 195px;
+  margin-top: 0px;
+  max-height: 315px;
+  margin-right: 0;
+  //padding: 0 17px 0px 17px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    background-color: rgba(146, 64, 64, 0);
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(133, 133, 133);
+    border-radius: 100vmax;
+  }
+}
+
+.hide {
+  display: none;
+}
+.div-search-bar-mini {
+  position: relative;
+}
+
+.search-bar-mini {
+  border: 1px solid #c6c6c6;
+  border-radius: 2px;
+  font-family: $fontSecondaire;
+  font-size: 14px;
+  color: #7a7a7a;
+  margin: 0 17px 10px 17px;
+  width: 155px;
+  height: 30px;
+}
+.icon-search-mini {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.ul-ingredients, .ul-appareils, .ul-ustensiles{
+  list-style-type: none;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+.li-ingredient, .li-appareils, .li-ustensiles{
+  padding: 7px 17px 7px 17px;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffd15b;
+  }
+}
+
+.selected-tags-container {
+  display: flex;
+  margin: 20px;
+  column-gap: 66px;
+  font-family: $fontSecondaire;
+  font-weight: 500;
+  font-size: 14px;
+  color: black;
+}
+
+.selected-tags-for {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 196px;
+  max-width: 196px;
+}
+
+.my-tag {
+  display: flex;
+  //width: auto;
+  //justify-content: space-between;
+  align-items: center;
+  column-gap: 40px;
+  background-color: #ffd15b;
+  padding: 17px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.fa-xmark {
+  font-size: 16px;
+  cursor: pointer;
+}

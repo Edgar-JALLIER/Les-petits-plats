@@ -1,81 +1,112 @@
 .all-recette-container {
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    row-gap: 50px;
-    column-gap: 50px;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 50px;
+  column-gap: 50px;
 }
 
 .recette-card {
-    width: 380px;
-    height: 364px;
-    background: #E7E7E7;
-    border-radius: 10px;
-    box-sizing: border-box;
-    &__image {
-        height: 170px;
-        background: #C7BEBE;
-        border-radius: 10px 10px 0 0;       
-    } 
-    &__photo {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-            border-radius: 10px 10px 0 0;
-        }
-    &__title-time {
-        margin: 0px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 20px 20px 20px;
-        & h2 {
-          font-size: 18px;  
-          margin: 0px;
-          font-weight: 400;
-        }
+  width: 380px;
+  height: 730px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+  &__image {
+    height: 250px;
+    background: #c7bebe;
+    border-radius: 10px 10px 0 0;
+  }
+  &__photo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+  &__div-time {
+    position: absolute;
+    font-family: $fontSecondaire;
+    font-weight: 400;
+    background-color: #ffd15b;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 63px;
+    height: 26px;
+    right: 22px;
+    top: 21px;
+  }
+  &__p-time {
+    font-size: 12px;
+  }
+  &__text-container {
+    padding: 25px;
+  }
+  &__title {
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & h2 {
+      padding: 0;
+      font-size: 18px;
+      margin: 0px;
+      font-weight: 400;
     }
-    &__div-time {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        min-width: 27%;
-        font-weight: bold;
-        font-size: 20px;
-    }
-    &__p-time {
-        margin: 0px 0 2px 0;
-        padding-left: 6px;
-        font-size: 18px;
-    }
-    &__ingredients-instruction {
-        display: flex;
-    }
-    &__ingredient-list {
-        width: 50%;
-        list-style-type: none;
-        padding: 0 0 0 20px;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    &__ingredient-item {
+    &-min {
+        color: #7A7A7A;
+        font-weight: 700;
         font-size: 12px;
-        &-bold {
-            font-weight: 700;
-        }
+        margin: 27px 0 15px 0;
     }
-    &__description {
-        width: 60%;
-        margin: 0;
-        padding: 0 15px 0 15px;
-        font-size: 12px;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+  }
+  
+  &__ingredients-instruction {
+    font-family: $fontSecondaire, serif;
+    font-size: 14px;
+  }
+  &__ingredient-container {
+    display: grid;
+    height: 180px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    justify-content: flex-start;
+  }
+  &__ingredient-list {
+    width: 100%;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0;
+    // display: -webkit-box;
+    // -webkit-line-clamp: 6;
+    // -webkit-box-orient: vertical;
+    // overflow: hidden;
+  }
+  &__ingredient-item {
+    font-size: 14px;
+    color: #7A7A7A;
+    &-bold {
+      font-weight: 500;
+      color: black;
     }
+  }
+  &__description {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width : 1320px) {
+  .all-recette-container {
+    justify-content: space-evenly;
+    row-gap: 40px;
+  }
 }

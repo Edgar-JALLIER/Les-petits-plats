@@ -1,13 +1,36 @@
+body {
+    margin: 0;
+    background: #e9e7e7;
+}
+
 header {
+    background: url(../../assets/lampos-aritonang-24gR_9lCdes-unsplash\ 1.png) no-repeat;
+    background-size: cover;
     text-align: center;
-    margin: 30px 0;
-    img {
-        width: 270px;
+    margin: 0 auto;
+    width: 100%;
+    height: 746px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    & .logo-de-base {
+        position: absolute;
+        left: 30px;
+        top: 50px;
+        margin: 0;
+    }
+    & h2 {
+        color: #FFD15B;
+        width: 890px;
+        font-family: $fontPrincipale, sans-serif;
+        font-size: 44px;
+        font-weight: 400;
     }
 }
 
 main {
-    font-family: 'Lato', 'Roboto', sans-serif;
+    font-family: $fontPrincipale, sans-serif;
     max-width: 1440px;
     margin: 0 auto;
 }
@@ -19,22 +42,30 @@ main {
 }
 
 .input-recherche {
-    color: black;
-    font-size: 18px;
-    background-color: #E7E7E7;
+    color: #7A7A7A;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 100%;
-    height: 40px;
-    padding: 20px;
+    height: 70px;
+    padding-left: 35px;
     &::placeholder {
-        font-family: $fontPrincipale;
+        font-family: $fontSecondaire;
     }
 }
 
 .icon-search {
+    width: 50px;
+    height: 50px;
     position: absolute;
-    top: 18px;
-    right: 20px;
+    top: 11px;
+    right: 10px;
     cursor: pointer;
+}
+
+.errorMessage {
+    display: flex;
+    font-size: xx-large;
+    justify-content: center;
 }
