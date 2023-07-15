@@ -1,4 +1,4 @@
-let bonjour = 'test';
+let bonjour = "test";
 
 let arrayRecetteAfterFilter = new Object(tableauDesRecettes);
 
@@ -13,14 +13,17 @@ searchBar.addEventListener("keyup", async (e) => {
 async function rechercheDeRecette(tableau) {
   // Je vide le tableau de la Searchbar
   arrayRecetteAfterSearch = [];
-  // Je filtre mes recettes dans le tableau de toutes les recettes avec la valeur de la barre de recherche
-  arrayRecetteAfterSearch = tableau.filter((e) => {
-    return (
-      JSON.stringify(e).toLowerCase().indexOf(searchBar.value.toLowerCase()) >=
-      0
-    );
-  });
-  // Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
+
+  for (let i = 0; tableau.length > i; i++) {
+    const recetteTrouve =
+      JSON.stringify(tableau[i])
+        .toLowerCase()
+        .indexOf(searchBar.value.toLowerCase()) >= 0;
+    if (recetteTrouve) {
+      arrayRecetteAfterSearch.push(tableau[i]);
+    }
+  }
+  //   Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
   rechercheDeRecetteAfterDelete();
 
   // Ajout d'un message d'erreur si aucune recette n'est trouvé
@@ -41,7 +44,7 @@ async function rechercheDeRecetteParTagIngredient() {
   Mais si il y a au moins 1 filtre alors je me base sur le tableau de filtre en priorité
   */
   let tableauAFiltrer;
-  
+
   if (searchBar.value === "") {
     tableauAFiltrer = arrayRecetteAfterFilter;
   } else {
@@ -80,7 +83,7 @@ async function rechercheDeRecetteParTagAppareil() {
       tableauAFiltrer = arrayRecetteAfterFilter;
     }
   }
-  
+
   arrayRecetteAfterFilter = tableauAFiltrer.filter((e) => {
     return allFilterSelected.appareils.every((tag) => {
       return e.appliance.trim().toLowerCase().includes(tag);
