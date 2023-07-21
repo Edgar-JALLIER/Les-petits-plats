@@ -1,8 +1,8 @@
 .tags-container {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   position: relative;
-
   margin: 20px;
 }
 .tags-div {
@@ -17,6 +17,7 @@
   &-recette-number {
     display: flex;
     align-items: center;
+    margin-top: 13px;
     font-size: 21px;
     font-weight: 400;
   }
@@ -88,13 +89,17 @@
   cursor: pointer;
 }
 
-.ul-ingredients, .ul-appareils, .ul-ustensiles{
+.ul-ingredients,
+.ul-appareils,
+.ul-ustensiles {
   list-style-type: none;
   padding: 0;
   font-weight: 400;
   font-size: 14px;
 }
-.li-ingredient, .li-appareils, .li-ustensiles{
+.li-ingredient,
+.li-appareils,
+.li-ustensiles {
   padding: 7px 17px 7px 17px;
   cursor: pointer;
   &:hover {
@@ -135,4 +140,39 @@
 .fa-xmark {
   font-size: 16px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .tags-container {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .tags-div {
+    display: block;
+    margin-top: 15px;
+  }
+  .tag-for {
+    &-recette-number {
+      margin-top: 0;
+      font-size: 30px;
+    }
+    &-ingredients {
+      margin-bottom: 20px;
+    }
+  }
+  .selected-tags-container {
+    margin: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .selected-tags-for {
+    display: block;
+  }
+  .my-tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

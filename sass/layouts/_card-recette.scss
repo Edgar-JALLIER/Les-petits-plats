@@ -80,10 +80,6 @@
     list-style-type: none;
     padding: 0px;
     margin: 0;
-    // display: -webkit-box;
-    // -webkit-line-clamp: 6;
-    // -webkit-box-orient: vertical;
-    // overflow: hidden;
   }
   &__ingredient-item {
     font-size: 14px;
@@ -108,5 +104,10 @@
   .all-recette-container {
     justify-content: space-evenly;
     row-gap: 40px;
+  }
+}
+@media screen and (max-width : 500px) {
+  .recette-card {
+    width: 340px;
   }
 }

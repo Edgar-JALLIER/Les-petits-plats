@@ -22,7 +22,7 @@ header {
     }
     & h2 {
         color: #FFD15B;
-        width: 890px;
+        max-width: 890px;
         font-family: $fontPrincipale, sans-serif;
         font-size: 44px;
         font-weight: 400;
@@ -69,3 +69,28 @@ main {
     font-size: xx-large;
     justify-content: center;
 }
+
+@media screen and (max-width : 500px) {
+    header {
+        height: 600px;
+        & h2 {
+            font-size: 38px;
+            margin: 30px 10px 30px 10px;
+        }
+    }
+    .input-recherche {
+      padding-left: 20px;
+      font-size: 13px;
+      height: 50px;
+    }
+    .icon-search {
+        width: 40px;
+        height: 40px;
+        top: 7px;
+        right: 7px;
+    }
+    .errorMessage {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+  }

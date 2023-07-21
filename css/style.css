@@ -24,7 +24,7 @@ header .logo-de-base {
 }
 header h2 {
   color: #FFD15B;
-  width: 890px;
+  max-width: 890px;
   font-family: "Anton", sans-serif, sans-serif;
   font-size: 44px;
   font-weight: 400;
@@ -71,6 +71,30 @@ main {
   justify-content: center;
 }
 
+@media screen and (max-width: 500px) {
+  header {
+    height: 600px;
+  }
+  header h2 {
+    font-size: 38px;
+    margin: 30px 10px 30px 10px;
+  }
+  .input-recherche {
+    padding-left: 20px;
+    font-size: 13px;
+    height: 50px;
+  }
+  .icon-search {
+    width: 40px;
+    height: 40px;
+    top: 7px;
+    right: 7px;
+  }
+  .errorMessage {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+}
 .all-recette-container {
   margin: 20px;
   display: flex;
@@ -178,8 +202,14 @@ main {
     row-gap: 40px;
   }
 }
+@media screen and (max-width: 500px) {
+  .recette-card {
+    width: 340px;
+  }
+}
 .tags-container {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   position: relative;
   margin: 20px;
@@ -197,6 +227,7 @@ main {
 .tag-for-recette-number {
   display: flex;
   align-items: center;
+  margin-top: 13px;
   font-size: 21px;
   font-weight: 400;
 }
@@ -267,18 +298,24 @@ main {
   cursor: pointer;
 }
 
-.ul-ingredients, .ul-appareils, .ul-ustensiles {
+.ul-ingredients,
+.ul-appareils,
+.ul-ustensiles {
   list-style-type: none;
   padding: 0;
   font-weight: 400;
   font-size: 14px;
 }
 
-.li-ingredient, .li-appareils, .li-ustensiles {
+.li-ingredient,
+.li-appareils,
+.li-ustensiles {
   padding: 7px 17px 7px 17px;
   cursor: pointer;
 }
-.li-ingredient:hover, .li-appareils:hover, .li-ustensiles:hover {
+.li-ingredient:hover,
+.li-appareils:hover,
+.li-ustensiles:hover {
   background-color: #ffd15b;
 }
 
@@ -313,6 +350,39 @@ main {
 .fa-xmark {
   font-size: 16px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .tags-container {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .tags-div {
+    display: block;
+    margin-top: 15px;
+  }
+  .tag-for-recette-number {
+    margin-top: 0;
+    font-size: 30px;
+  }
+  .tag-for-ingredients {
+    margin-bottom: 20px;
+  }
+  .selected-tags-container {
+    margin: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .selected-tags-for {
+    display: block;
+  }
+  .my-tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

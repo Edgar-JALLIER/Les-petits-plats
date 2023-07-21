@@ -3,14 +3,14 @@ const sectionRecette = document.querySelector(".ma-section-recette");
 const searchBar = document.getElementById("search");
 const monContainer = document.querySelector(".ma-section-recette");
 const errorMessage = document.querySelector(".errorMessage");
+const containerTagIngredients = document.querySelector(
+  ".container-all-ingredients"
+);
+
 // 3 Inputs de filtre
 const filterTagIngredients = document.querySelector("#filter-ingredients");
 const filterTagAppareils = document.querySelector("#filter-appareils");
 const filterTagUstensiles = document.querySelector("#filter-ustensiles");
-
-const containerTagIngredients = document.querySelector(
-  ".container-all-ingredients"
-);
 
 // 3 search bar différentes
 const SearchBarIngredients = document.querySelector("#search-bar-ingredients");
