@@ -23,7 +23,7 @@ async function rechercheDeRecette(tableau) {
 
   // Ajout d'un message d'erreur si aucune recette n'est trouvé
   if (arrayRecetteAfterSearch.length <= 0) {
-    errorMessage.textContent = "Désolé aucune recette trouvée ...";
+    errorMessage.textContent = "Désolé aucune recette trouvée contenant :" + ` ${searchBar.value.toLowerCase()}`;
   } else {
     errorMessage.textContent = "";
   }
