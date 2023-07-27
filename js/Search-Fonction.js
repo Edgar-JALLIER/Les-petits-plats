@@ -9,14 +9,23 @@ searchBar.addEventListener("keyup", async (e) => {
 });
 
 async function rechercheDeRecette(tableau) {
-  // Je vide le tableau de la Searchbar
-  arrayRecetteAfterSearch = [];
+  const searchTerm = searchBar.value.toLowerCase();
   // Je filtre mes recettes dans le tableau de toutes les recettes avec la valeur de la barre de recherche
-  arrayRecetteAfterSearch = tableau.filter((e) => {
-    return (
-      JSON.stringify(e).toLowerCase().indexOf(searchBar.value.toLowerCase()) >=
-      0
-    );
+  arrayRecetteAfterSearch = tableau.filter((recette) => {
+   // Vérifier si le terme de recherche se trouve dans le nom, la description ou les ingrédients de la recette
+   const nameMatch = recette.name.toLowerCase().includes(searchTerm);
+   const descriptionMatch = recette.description.toLowerCase().includes(searchTerm);
+   const ingredientsMatch = recette.ingredients.some(
+       (ingredient) => ingredient.ingredient.toLowerCase().includes(searchTerm)
+   );
+
+   // Retourner true si le terme de recherche est présent dans au moins l'un des champs
+   return nameMatch || descriptionMatch || ingredientsMatch;
+      
+    // return (
+    //   JSON.stringify(e).toLowerCase().indexOf(searchBar.value.toLowerCase()) >=
+    //   0
+    // );
   });
   // Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
   rechercheDeRecetteAfterDelete();

@@ -30,10 +30,10 @@ const mySetOfAppareils = new Set();
 const mySetOfUstensiles = new Set();
 
 // Objet pour répertorier les filtre sélectionnées
-const allFilterSelected= {
+const allFilterSelected = {
   ingredients: [],
   appareils: [],
-  ustensiles: []
+  ustensiles: [],
 };
 
 // Tbaleau avec toutes les recettes créé après la récupération des données
@@ -114,8 +114,8 @@ function affichageIngredient(uneRecette) {
     const monIngredient = document.createElement("span");
     const spanQuantity = document.createElement("span");
     const spanUnit = document.createElement("span");
-    const maQuantity = e.quantity ? e.quantity : '';
-    const monUnit = e.unit ? e.unit : '';
+    const maQuantity = e.quantity ? e.quantity : "";
+    const monUnit = e.unit ? e.unit : "";
 
     mesIngredients.setAttribute("class", "recette-card__ingredient-item");
     monIngredient.setAttribute("class", "recette-card__ingredient-item-bold");
@@ -123,11 +123,11 @@ function affichageIngredient(uneRecette) {
     mesIngredients.appendChild(monIngredient);
 
     // Condition si l'ingrédient n'a pas de quantité ou d'unité alors ne créé rien
-    if (maQuantity != '') {
+    if (maQuantity != "") {
       spanQuantity.innerHTML = `${maQuantity}`;
       mesIngredients.appendChild(spanQuantity);
     }
-    if (monUnit != '') {
+    if (monUnit != "") {
       spanUnit.innerHTML = ` ${monUnit}`;
       mesIngredients.appendChild(spanUnit);
     }
@@ -144,40 +144,38 @@ async function initialisationDeToutesLesRecettes() {
 }
 initialisationDeToutesLesRecettes();
 
-
 // Ajout du filtre cliqué dans le DOM + ajout dans le tableau de filtre
 function ajoutFiltre(monItem, filterCategorie) {
-  
   const nomDuTag = monItem.target.textContent;
   const newDivTag = document.createElement("div");
   const tagPourIdUnique = nomDuTag.replace(/ /g, "-").replace(/[()']/g, "");
 
   newDivTag.innerHTML = `${nomDuTag} <i class="fa-solid fa-xmark ${tagPourIdUnique}"></i>`;
-  
-  if(filterCategorie == 'ingredients') {
+
+  if (filterCategorie == "ingredients") {
     newDivTag.setAttribute("class", "my-tag ingredient");
     mesTagsIngredients.appendChild(newDivTag);
     filterTagIngredients.nextElementSibling.classList.add("hide");
-    filterTagIngredients.style.setProperty('--deg', '0deg');
+    filterTagIngredients.style.setProperty("--deg", "0deg");
     // Ajout du tag dans le tableau correspondant => ici ingredients
     allFilterSelected[filterCategorie].push(nomDuTag);
     rechercheDeRecetteParTagIngredient();
   }
 
-  if(filterCategorie == 'appareils') {
+  if (filterCategorie == "appareils") {
     newDivTag.setAttribute("class", "my-tag appareil");
-    mesTagsAppareils.appendChild(newDivTag)
+    mesTagsAppareils.appendChild(newDivTag);
     filterTagAppareils.nextElementSibling.classList.add("hide");
-    filterTagAppareils.style.setProperty('--deg', '0deg');
+    filterTagAppareils.style.setProperty("--deg", "0deg");
     allFilterSelected[filterCategorie].push(nomDuTag);
-    rechercheDeRecetteParTagAppareil()
+    rechercheDeRecetteParTagAppareil();
   }
-  
-  if(filterCategorie == 'ustensiles') {
+
+  if (filterCategorie == "ustensiles") {
     newDivTag.setAttribute("class", "my-tag ustensile");
-    mesTagsUstensiles.appendChild(newDivTag)
+    mesTagsUstensiles.appendChild(newDivTag);
     filterTagUstensiles.nextElementSibling.classList.add("hide");
-    filterTagUstensiles.style.setProperty('--deg', '0deg');
+    filterTagUstensiles.style.setProperty("--deg", "0deg");
     allFilterSelected[filterCategorie].push(nomDuTag);
     rechercheDeRecetteParTagUstensile();
   }
@@ -186,30 +184,35 @@ function ajoutFiltre(monItem, filterCategorie) {
   croix.addEventListener("click", removeFilterTag);
 }
 
-
 // Permet de supprimer un filtre
 function removeFilterTag(maCroix) {
   const monTag = maCroix.target.parentElement;
   const contentTag = monTag.textContent;
-  const tableauFiltreIngredients = allFilterSelected.ingredients
+  const tableauFiltreIngredients = allFilterSelected.ingredients;
   const tableauFiltreAppareils = allFilterSelected.appareils;
   const tableauFiltreUstensiles = allFilterSelected.ustensiles;
 
   // Suppression du tag dans le tableau correspondant entre ingrédients, appareils et ustensiles
-  if(monTag.classList.contains('ingredient')) {
+  if (monTag.classList.contains("ingredient")) {
     //Suppression du filtre avec l'index de l'élément (.trim => supprimer les espaces)
-    tableauFiltreIngredients.splice(tableauFiltreIngredients.indexOf(contentTag.trim()), 1);
-    
+    tableauFiltreIngredients.splice(
+      tableauFiltreIngredients.indexOf(contentTag.trim()),
+      1
+    );
   }
 
-  if(monTag.classList.contains('appareil')) {
-    tableauFiltreAppareils.splice(tableauFiltreAppareils.indexOf(contentTag.trim()), 1);
-    
+  if (monTag.classList.contains("appareil")) {
+    tableauFiltreAppareils.splice(
+      tableauFiltreAppareils.indexOf(contentTag.trim()),
+      1
+    );
   }
 
-  if(monTag.classList.contains('ustensile')) {
-    tableauFiltreUstensiles.splice(tableauFiltreUstensiles.indexOf(contentTag.trim()), 1);
-    
+  if (monTag.classList.contains("ustensile")) {
+    tableauFiltreUstensiles.splice(
+      tableauFiltreUstensiles.indexOf(contentTag.trim()),
+      1
+    );
   }
   rechercheDeRecetteAfterDelete();
   //Suppression sur le DOM
