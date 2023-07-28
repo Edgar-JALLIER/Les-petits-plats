@@ -10,18 +10,41 @@ searchBar.addEventListener("keyup", async (e) => {
   await rechercheDeRecette(tableauDesRecettes);
 });
 
-async function rechercheDeRecette(tableau) {
-  // Je vide le tableau de la Searchbar
+async function rechercheDeRecette(mesRecettes) {
   arrayRecetteAfterSearch = [];
 
-  for (let i = 0; tableau.length > i; i++) {
-    const recetteTrouve =
-      JSON.stringify(tableau[i])
-        .toLowerCase()
-        .indexOf(searchBar.value.toLowerCase()) >= 0;
-    if (recetteTrouve) {
-      arrayRecetteAfterSearch.push(tableau[i]);
+  const searchTerm = searchBar.value.toLowerCase();
+
+  for (const recette of mesRecettes) {
+    const name = recette.name.toLowerCase();
+    const description = recette.description.toLowerCase();
+
+    let nameMatch = name.indexOf(searchTerm) !== -1;
+    let descriptionMatch = description.indexOf(searchTerm) !== -1;
+
+    // Si aucune correspondance n'a été trouvée dans le nom ou la description, vérifier les ingrédients
+    if (!nameMatch && !descriptionMatch) {
+      for (const monIngredient of recette.ingredients) {
+        const ingredient = monIngredient.ingredient.toLowerCase();
+        if (ingredient.indexOf(searchTerm) !== -1) {
+          // Si une correspondance est trouvée dans les ingrédients, on peut ajouter la recette
+          arrayRecetteAfterSearch.push(recette);
+          break; // Pas besoin de vérifier les autres ingrédients, on peut passer à la recette suivante
+        }
+      }
+    } else {
+      // Si une correspondance a été trouvée dans le nom ou la description, ajouter la recette directement
+      arrayRecetteAfterSearch.push(recette);
     }
+
+    // for (let i = 0; tableau.length > i; i++) {
+    //   const recetteTrouve =
+    //     JSON.stringify(tableau[i])
+    //       .toLowerCase()
+    //       .indexOf(searchBar.value.toLowerCase()) >= 0;
+    //   if (recetteTrouve) {
+    //     arrayRecetteAfterSearch.push(tableau[i]);
+    //   }
   }
   //   Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
   rechercheDeRecetteAfterDelete();
