@@ -21,12 +21,8 @@ async function rechercheDeRecette(tableau) {
 
    // Retourner true si le terme de recherche est présent dans au moins l'un des champs
    return nameMatch || descriptionMatch || ingredientsMatch;
-      
-    // return (
-    //   JSON.stringify(e).toLowerCase().indexOf(searchBar.value.toLowerCase()) >=
-    //   0
-    // );
   });
+  
   // Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
   rechercheDeRecetteAfterDelete();
 
