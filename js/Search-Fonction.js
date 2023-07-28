@@ -36,16 +36,8 @@ async function rechercheDeRecette(mesRecettes) {
       // Si une correspondance a été trouvée dans le nom ou la description, ajouter la recette directement
       arrayRecetteAfterSearch.push(recette);
     }
-
-    // for (let i = 0; tableau.length > i; i++) {
-    //   const recetteTrouve =
-    //     JSON.stringify(tableau[i])
-    //       .toLowerCase()
-    //       .indexOf(searchBar.value.toLowerCase()) >= 0;
-    //   if (recetteTrouve) {
-    //     arrayRecetteAfterSearch.push(tableau[i]);
-    //   }
   }
+  
   //   Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
   rechercheDeRecetteAfterDelete();
 
