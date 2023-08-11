@@ -12,23 +12,35 @@ async function rechercheDeRecette(tableau) {
   const searchTerm = searchBar.value.toLowerCase();
   // Je filtre mes recettes dans le tableau de toutes les recettes avec la valeur de la barre de recherche
   arrayRecetteAfterSearch = tableau.filter((recette) => {
-   // Vérifier si le terme de recherche se trouve dans le nom, la description ou les ingrédients de la recette
-   const nameMatch = recette.name.toLowerCase().includes(searchTerm);
-   const descriptionMatch = recette.description.toLowerCase().includes(searchTerm);
-   const ingredientsMatch = recette.ingredients.some(
-       (ingredient) => ingredient.ingredient.toLowerCase().includes(searchTerm)
-   );
-
-   // Retourner true si le terme de recherche est présent dans au moins l'un des champs
-   return nameMatch || descriptionMatch || ingredientsMatch;
+    // Vérifier si le terme de recherche se trouve dans le nom, la description ou les ingrédients de la recette
+    const nameMatch = recette.name.toLowerCase().includes(searchTerm);
+    // Retourner true si le terme de recherche est présent dans au moins l'un des champs
+    if (nameMatch) {
+      return true;
+    }
+    const descriptionMatch = recette.description
+      .toLowerCase()
+      .includes(searchTerm);
+    if (descriptionMatch) {
+      return true;
+    }
+    const ingredientsMatch = recette.ingredients.some((ingredient) =>
+      ingredient.ingredient.toLowerCase().includes(searchTerm)
+    );
+    if (ingredientsMatch) {
+      return true;
+    }
+    return false;
   });
-  
+
   // Je vais filtrer mon tableau de la barre de recherche avec les filtres séléctionnés s'il y en a
   rechercheDeRecetteAfterDelete();
 
   // Ajout d'un message d'erreur si aucune recette n'est trouvé
   if (arrayRecetteAfterSearch.length <= 0) {
-    errorMessage.textContent = "Désolé aucune recette trouvée contenant :" + ` ${searchBar.value.toLowerCase()}`;
+    errorMessage.textContent =
+      "Désolé aucune recette trouvée contenant :" +
+      ` ${searchBar.value.toLowerCase()}`;
   } else {
     errorMessage.textContent = "";
   }
@@ -44,7 +56,7 @@ async function rechercheDeRecetteParTagIngredient() {
   Mais si il y a au moins 1 filtre alors je me base sur le tableau de filtre en priorité
   */
   let tableauAFiltrer;
-  
+
   if (searchBar.value === "") {
     tableauAFiltrer = arrayRecetteAfterFilter;
   } else {
@@ -83,7 +95,7 @@ async function rechercheDeRecetteParTagAppareil() {
       tableauAFiltrer = arrayRecetteAfterFilter;
     }
   }
-  
+
   arrayRecetteAfterFilter = tableauAFiltrer.filter((e) => {
     return allFilterSelected.appareils.every((tag) => {
       return e.appliance.trim().toLowerCase().includes(tag);
