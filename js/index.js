@@ -86,7 +86,7 @@ async function createRecetteDom(recettes) {
             <div class="recette-card__div-time">
               <p class="recette-card__p-time">${recette.time} min</p>
             </div>
-            <img class="recette-card__photo" src='../assets/photos-recettes/Recette${recette.id}.jpg' alt="" />
+            <img class="recette-card__photo" src='${repoName}/assets/photos-recettes/Recette${recette.id}.jpg' alt="" />
           </div>
           <div class="recette-card__text-container">
           <div class="recette-card__title">
