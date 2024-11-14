@@ -42,7 +42,7 @@ let tableauDesRecettes = [];
 // Fonction de récupération de la data des recettes
 async function getRecettes() {
   try {
-    const response = await fetch("../../data/data-recettes.json");
+    const response = await fetch("/data/data-recettes.json");
     if (response.ok) {
       const responseJson = await response.json();
 
