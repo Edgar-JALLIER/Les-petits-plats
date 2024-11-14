@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  background: url(../../assets/lampos-aritonang-24gR_9lCdes-unsplash\ 1.png) no-repeat;
+  background: url(../assets/bg-hero.png) no-repeat;
   background-size: cover;
   text-align: center;
   margin: 0 auto;
@@ -23,7 +23,7 @@ header .logo-de-base {
   margin: 0;
 }
 header h2 {
-  color: #FFD15B;
+  color: #ffd15b;
   max-width: 890px;
   font-family: "Anton", sans-serif, sans-serif;
   font-size: 44px;
@@ -43,7 +43,7 @@ main {
 }
 
 .input-recherche {
-  color: #7A7A7A;
+  color: #7a7a7a;
   font-size: 16px;
   background-color: rgb(255, 255, 255);
   border: none;
@@ -156,7 +156,7 @@ main {
   font-weight: 400;
 }
 .recette-card__title-min {
-  color: #7A7A7A;
+  color: #7a7a7a;
   font-weight: 700;
   font-size: 12px;
   margin: 27px 0 15px 0;
@@ -180,7 +180,7 @@ main {
 }
 .recette-card__ingredient-item {
   font-size: 14px;
-  color: #7A7A7A;
+  color: #7a7a7a;
 }
 .recette-card__ingredient-item-bold {
   font-weight: 500;
