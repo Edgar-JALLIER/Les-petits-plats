@@ -39,10 +39,16 @@ const allFilterSelected = {
 // Tbaleau avec toutes les recettes créé après la récupération des données
 let tableauDesRecettes = [];
 
+const repoName = window.location.pathname.startsWith("/Les-petits-plats")
+  ? "/Les-petits-plats"
+  : "";
+
+const url = `${repoName}/data/data-recettes.json`;
+
 // Fonction de récupération de la data des recettes
 async function getRecettes() {
   try {
-    const response = await fetch("/data/data-recettes.json");
+    const response = await fetch(url);
     if (response.ok) {
       const responseJson = await response.json();
 
